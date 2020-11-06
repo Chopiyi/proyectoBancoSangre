@@ -1,0 +1,43 @@
+body{
+    background: #E1D5D8;
+    font-family: Lucida Bright;
+}
+header div h1, header div h3 {
+    font-family: Lucida Handwriting;
+}
+
+#imagen_principal{
+    background: url('../img/imagen_inicio.jpg');
+    background-size: cover;
+    background-position: center;
+    height:48em;
+}
+
+.background-sangre{
+  background: #960200;
+}
+#card_contacto{
+  background: #DE466B;
+  color: white;
+}
+
+ul{
+  list-style: none;
+}
+
+#iconos_footer div a{
+  margin-left: 1em;
+  margin-right: 1em;
+}
+
+#navbarNav ul li a{
+  text-decoration: none;
+  color: white;
+  margin-left: 2em;
+  margin-right: 2em;
+
+}
+
+.btn{
+  background: #960200;
+}
