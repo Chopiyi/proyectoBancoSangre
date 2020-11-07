@@ -126,7 +126,7 @@
     input_telefono.addEventListener('input', function(){
 
       telefono = event.target.value;
-      if(telefono === '' || telefono.isNaN === false){
+      if(telefono === '' || isNaN(telefono) === true || telefono.length < 11 || telefono < 0){
 
         input_telefono.classList.remove('is-valid');
         input_telefono.classList.add('is-invalid');
