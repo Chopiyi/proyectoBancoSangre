@@ -3,8 +3,19 @@
 //Validando que el texto solo contenga letras (valido para caractéres latinos, ingleses, o cualquiera que se pueda poner en mayúsculas)
   function soloLetras(nombre) {
     let valido = true;
-    for (var i = 0; i < nombre.length; i++) {
-      if (nombre.charAt(i).toLowerCase() === nombre.charAt(i).toUpperCase()) {
+    for (var i = 0; i < nombre.replace(/ /g, "").length; i++) {
+      if (nombre.replace(/ /g, "").charAt(i).toLowerCase() === nombre.replace(/ /g, "").charAt(i).toUpperCase()) {
+        valido = false;
+      }
+    }
+    return valido;
+  };
+
+//Validando que el texto ingresado solo posea caracteres del alfabeto (incluyendo la Ñ o acentos) y/o valores numéricos.
+  function soloLetrasNumeros(nombre) {
+    let valido = true;
+    for (var i = 0; i < nombre.replace(/ /g, "").length; i++) {
+      if (nombre.replace(/ /g, "").charAt(i).toLowerCase() === nombre.replace(/ /g, "").charAt(i).toUpperCase() && isNaN(nombre.replace(/ /g, "").charAt(i))) {
         valido = false;
       }
     }
@@ -43,6 +54,7 @@
   let pais = document.querySelector('#pais_registro').value;
   let contraseña = document.querySelector('#contraseña_registro').value;
   let confirmacion_contraseña = document.querySelector('#confirmar_contraseña_registro').value;
+
   //Validando los ingresos de los inputs mediante el evento input
   //Mostrando al usuario la validación correspondiente, y el mensaje de ayuda
   //Definiendo variables de validacion por cada input, y cambiando su valor de acuerdo al evento.
@@ -100,7 +112,7 @@
     input_direccion.addEventListener('input', function(){
 
       direccion = event.target.value;
-      if(direccion === ''){
+      if(direccion === '' || soloLetrasNumeros(direccion) === false){
         input_direccion.classList.remove('is-valid');
         input_direccion.classList.add('is-invalid');
         direccion_valido = false;
@@ -174,6 +186,10 @@
 
 //listener del click del boton confirmar suscripción.
   document.querySelector('#confirmar_suscripcion_btn').addEventListener('click', function(){
+
+//obtenemos un div vacío, para rellenarlo con una alerta en el caso de que el ingreso de datos este incompleto
+//mostramos el alert en caso de ingreso inválido
+//en el caso de que el ingreso sea válido, llamamos el modal que muestra el mensaje de éxito
 
     let alerta_registro = document.querySelector('#alerts_suscripcion');
     alerta_registro.innerHTML = "";
